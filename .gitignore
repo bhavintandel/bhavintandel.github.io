@@ -1,5 +1,10 @@
 
+
 # Created by https://www.gitignore.io/api/c,r,c++,java,linux,scala,django,python,windows,pycharm,intellij,virtualenv,jupyternotebook
+
+### Bootstap ###
+node_modules
+
 
 ### C ###
 # Prerequisites

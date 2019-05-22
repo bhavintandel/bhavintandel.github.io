@@ -3,8 +3,8 @@
   "username": "bhavintandel",
   "name": "Bhavin Tandel",
   "userimg": "https://avatars2.githubusercontent.com/u/12938417?v=4",
-  "sort": "created",
-  "order": "asc",
+  "sort": "star",
+  "order": "desc",
   "includeFork": false,
   "theme": "light.css"
  }

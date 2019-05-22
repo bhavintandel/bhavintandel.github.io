@@ -1,147 +1,68 @@
-<img src="https://i.imgur.com/eA6clZr.png">
+# [Start Bootstrap - Freelancer](https://startbootstrap.com/template-overviews/freelancer/)
 
-# Gitfolio  [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=personal%20website%20and%20a%20blog%20for%20every%20github%20user%20&url=https://github.com/imfunniee/gitfolio) ![GitHub release](https://img.shields.io/github/release/imfunniee/gitfolio.svg) ![GitHub top language](https://img.shields.io/github/languages/top/imfunniee/gitfolio.svg) ![GitHub last commit](https://img.shields.io/github/last-commit/imfunniee/gitfolio.svg) ![GitHub](https://img.shields.io/github/license/imfunniee/gitfolio.svg)
-  
-### personal website + blog  for every github user
+[Freelancer](http://startbootstrap.com/template-overviews/freelancer/) is a one page freelancer portfolio theme for [Bootstrap](http://getbootstrap.com/) created by [Start Bootstrap](http://startbootstrap.com/). This theme features several content sections, a responsive portfolio grid with hover effects, full page portfolio item modals, and a working PHP contact form.
 
-Gitfolio will help you get started with a portfolio website where you could showcase your work + a blog that will help you spread your ideas into real world.
+## Preview
 
-Check out this [live demo](https://imfunniee.github.io/gitfolio/) to see gitfolio in action.
+[![Freelancer Preview](https://startbootstrap.com/assets/img/screenshots/themes/freelancer.png)](https://blackrockdigital.github.io/startbootstrap-freelancer/)
 
+**[View Live Preview](https://blackrockdigital.github.io/startbootstrap-freelancer/)**
 
-# Getting Started
+## Status
 
-### Let's Build
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/BlackrockDigital/startbootstrap-freelancer/master/LICENSE)
+[![npm version](https://img.shields.io/npm/v/startbootstrap-freelancer.svg)](https://www.npmjs.com/package/startbootstrap-freelancer)
+[![Build Status](https://travis-ci.org/BlackrockDigital/startbootstrap-freelancer.svg?branch=master)](https://travis-ci.org/BlackrockDigital/startbootstrap-freelancer)
+[![dependencies Status](https://david-dm.org/BlackrockDigital/startbootstrap-freelancer/status.svg)](https://david-dm.org/BlackrockDigital/startbootstrap-freelancer)
+[![devDependencies Status](https://david-dm.org/BlackrockDigital/startbootstrap-freelancer/dev-status.svg)](https://david-dm.org/BlackrockDigital/startbootstrap-freelancer?type=dev)
 
-a. Clone this repo or simply download it.
-```sh
-git clone https://github.com/imfunniee/gitfolio.git
-```
+## Download and Installation
 
-b. `cd` into the repo you just cloned or downloaded.
-```sh
-cd gitfolio # Navigate into the project folder
-npm i # Install the required dependencies
-```
+To begin using this template, choose one of the following options to get started:
+* [Download the latest release on Start Bootstrap](https://startbootstrap.com/template-overviews/freelancer/)
+* Install via npm: `npm i startbootstrap-freelancer`
+* Clone the repo: `git clone https://github.com/BlackrockDigital/startbootstrap-freelancer.git`
+* [Fork, Clone, or Download on GitHub](https://github.com/BlackrockDigital/startbootstrap-freelancer)
 
-c. Gitfolio is now ready to be used. The command
+## Usage
 
-```sh
-node build --name [username]
-```
-Will build your website using your GitHub username and put it in the `dist/` folder.
+### Basic Usage
 
-d. To run your website navigate to `./dist/index.html` in your browser. [you won't see blogs until you are on localhost]
+After downloading, simply edit the HTML and CSS files included with the template in your favorite text editor to make changes. These are the only files you need to worry about, you can ignore everything else! To preview the changes you make to the code, you can open the `index.html` file in your web browser.
 
-🎉 Congrats, you just made yourself a personal website!
+### Advanced Usage
 
-> if you get stuck somewhere or get an error, please create an issue
+After installation, run `npm install` and then run `npm start` which will open up a preview of the template in your default browser, watch for changes to core template files, and live reload the browser when changes are saved. You can view the `gulpfile.js` to see which tasks are included with the dev environment.
 
-### Let's Customize
+#### Gulp Tasks
 
-#### Forks
+- `gulp` the default task that builds everything
+- `gulp watch` browserSync opens the project in your default browser and live reloads when changes are made
+- `gulp css` compiles SCSS files into CSS and minifies the compiled CSS
+- `gulp js` minifies the themes JS file
+- `gulp vendor` copies dependencies from node_modules to the vendor directory
 
-To include forks on your personal website just provide `-f` or `--fork` argument while building
+You must have npm and Gulp installed globally on your machine in order to use these features.
 
-```
-$ node build --name username -f
-```
+## Bugs and Issues
 
-#### Sorting Repos
+Have a bug or an issue with this template? [Open a new issue](https://github.com/BlackrockDigital/startbootstrap-freelancer/issues) here on GitHub or leave a comment on the [template overview page at Start Bootstrap](http://startbootstrap.com/template-overviews/freelancer/).
 
-To sort repos provide `--sort [sortBy]` argument while building. Where `[sortBy]` can be `star`, `created`, `updated`, `pushed`,`full_name`. Default: `created`
+## About
 
-```
-$ node build --name username --sort star
-```
+Start Bootstrap is an open source library of free Bootstrap templates and themes. All of the free templates and themes on Start Bootstrap are released under the MIT license, which means you can use them for any purpose, even for commercial projects.
 
-#### Ordering Repos
+* https://startbootstrap.com
+* https://twitter.com/SBootstrap
 
-To order the sorted repos provide `--order [orderBy]` argument while building. Where `[orderBy]` can be `asc` or `desc`. Default: `asc`
+Start Bootstrap was created by and is maintained by **[David Miller](http://davidmiller.io/)**, Owner of [Blackrock Digital](http://blackrockdigital.io/).
 
-```
-$ node build --name username --sort star --order desc
-```
+* http://davidmiller.io
+* https://twitter.com/davidmillerskt
+* https://github.com/davidtmiller
 
-#### Customize Themes
+Start Bootstrap is based on the [Bootstrap](http://getbootstrap.com/) framework created by [Mark Otto](https://twitter.com/mdo) and [Jacob Thorton](https://twitter.com/fat).
 
-Themes are specified using the `--theme [theme-name]` flag when running the `build` command. The available themes are
+## Copyright and License
 
-* `light`
-* `dark`
-> TODO: Add more themes
-
-For example, the following command will build the website with the dark theme
-```
-$ node build --name username --theme dark
-```
-
-#### Customize background image
-
-To customize the background image just provide `--background [url]` argument while building
-
-```
-$ node build --name username --background https://images.unsplash.com/photo-1557277770-baf0ca74f908?w=1634
-```
-
-You could also add in your custom CSS inside `index.css` to give it a more personal feel.
-
-
-### Let's Publish
-
-Head over to GitHub and create a new repository named `username.github.io`, where username is your username. Push the files inside`/dist` folder to repo you just created.
-
-Go To `username.github.io` your site should be up!!
-
-
-### Updating
-
-To update your info, simply run
-
-```
-$ node update
-```
-This will update your info and your repository info.
-
-To Update background or theme you need to run `build` command again.
-
-
-### Add a Blog
-
-To add your first blog run this command.
-
-```
-$ node blog --title my-first-blog
-```
-> (use "-" instead of spaces)
-
-This will create a `my-first-blog` folder inside `blog`. Inside `my-first-blog` you will find an `index.html` file which contains all the necessary elements for writing a blog. Customize the content of the file to write your first blog.
-
-This also adds content to `blog.json` file. This file helps in showcasing your blogs on your personal website as [cards](https://imfunniee.github.io/gitfolio/#blog_section). You could customize the JSON object that corresponds your current blog.
-
-Blog Demo? [here](https://imfunniee.github.io/gitfolio/blog/my-first-post/)
-
-Default JSON Format
-```
-{
-  "url_title": "my-first-blog", // the title you provide while creating a new blog, this appears in url
-  "title": "Lorem ipsum dolor sit amet", // main title of blog
-  "sub_title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", // sub-title of blog
-  "top_image": "https://images.unsplash.com/photo-1553748024-d1b27fb3f960?w=1450", // main image of blog
-  "visible": true // don't worry about this
-}
-```
-
-More Arguments for Blog
-
-```
---subtitle [subtitle] : gives blog a subtitle (Default : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
---pagetitle [pagetitle] : gives blog page a title
---folder [folder] : give folder a title
-```
-
-> (use "-" instead of spaces)
-
-
-## License
-![GitHub](https://img.shields.io/github/license/imfunniee/gitfolio.svg)
+Copyright 2013-2019 Blackrock Digital LLC. Code released under the [MIT](https://github.com/BlackrockDigital/startbootstrap-freelancer/blob/gh-pages/LICENSE) license.

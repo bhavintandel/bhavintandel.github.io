@@ -5,6 +5,7 @@
 ### Bootstap ###
 node_modules
 
+.DS_Store
 
 ### C ###
 # Prerequisites

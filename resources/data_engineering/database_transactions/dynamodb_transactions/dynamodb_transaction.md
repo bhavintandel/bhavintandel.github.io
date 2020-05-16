@@ -61,10 +61,10 @@ storage system along with your applications. It can be for saving the informatio
 storing the current state of your application.
 
 The real world is not perfect neither it can be made, But we can learn to handle the situation.
-Lets not get too phil0sophical and get to the point. 
+Lets not get too philosophical and get to the point. 
 Consider a scenario, you own an *Online shopping market*.
 You have maintained two tables, order table and dispatch table. 
-Order table containes information regarding order details. Now for instance whenever an order is processed
+Order table contains information regarding order details. Now for instance whenever an order is processed
 you add flag to your item in order table notifying that the order is completed and
 you add new item into dispatch table which indicate that new item has to be dispatched.
 
@@ -80,7 +80,7 @@ Scenario 3: Worst world for you
 
 Order table flagged and new item not added to dispatch.
 
-Now as we have seen these 3 scenario, we know that both of these tasks should be either successful or 
+Now as we have seen these 3 scenario, we know that both of these tasks(Flagging Order table and Adding item to Dispatch table) should be either successful or 
 both should roll back to previous state.
 
 To tackle these, you can develop your own custom highly intelligent software which considers all the scenario, 

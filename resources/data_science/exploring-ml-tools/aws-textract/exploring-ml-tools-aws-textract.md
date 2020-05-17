@@ -1,10 +1,14 @@
+---
+layout: custom
+---
+
 # Exploring ML Tools - Amazon Textract
 
-Douments have been part of our lives since very long time, however, its not always so easy to find something in document. With the new advances in machine learning we can actually digitize our document and thus put it to good use.
+Documents have been part of our lives since very long time, however, its not always so easy to find something in document. With the new advances in machine learning we can actually digitize our document and thus put it to good use.
 
 ## Introduction
 
-In this post, we will be exploring Amazon Textract which has the capabilites to extract text and data from documents. It uses Optical Character Recognition(OCR) and augmented AI to detects the document layout and key element from the it. 
+In this post, we will be exploring Amazon Textract which has the capabilities to extract text and data from documents. It uses Optical Character Recognition(OCR) and augmented AI to detects the document layout and key element from the it. 
 Amazon textract has been trained on tens of millions of documents including invoices, contracts, receipts, insurance claims, policy documents, etc.
 
 ## Features
@@ -13,11 +17,11 @@ Key-value pair extraction
 Table extraction
 Bounding Box for all the extracted result
 Confidence score for every extracted result
-It can handle multi page docuement
+It can handle multi page document
 
 ## Usecase
 
-Following is one of the example of how textract can be used to process large scale documents using complementary aws services.
+Following is one of the example of how Textract can be used to process large scale documents using complementary aws services.
 Large scale document processing with Amazon Textract
 
 ## Usage
@@ -29,7 +33,7 @@ The service can be used directly from aws console or using api in your preferred
 It accepts images of format (JPEG/PNG) and PDFs .
 For Images, we can perform synchronous or asynchronous call with reading it as bytes or passing s3 location.
 To process PDF, only asynchronous call is supported via s3 location.
-Initialize the textract client in python, if you are planning to run extract job on files under s3 bucket then, region_name should be same as the location on data.
+Initialize the Textract client in python, if you are planning to run extract job on files under s3 bucket then, region_name should be same as the location on data.
 
 #### Detexting text in Image
 
@@ -44,8 +48,12 @@ img_response_1 = textract_client.detect_document_text(
     Document={
         'Bytes': image
     })
+```
 The reponse contains lot of information regarding the the analysis. First of all we get DocumentMetadata which has information like page number of the analysis. And we get many Blocks which can be one of the following value 'KEY_VALUE_SET'|'PAGE'|'LINE'|'WORD'|'TABLE'|'CELL'|'SELECTION_ELEMENT'. 
+
 To extract text from the output:
+
+```python
 for block in img_response_1['Blocks']:
     if (block['BlockType'] == 'LINE'):
         print(block['Text'])
@@ -81,7 +89,7 @@ Please retain for Vour records
 
 With the above information we also get the actual location of that on a page with Bounding box information. Which can we used to create the indexed search engine of our documents and thus make it searchable on word level.
 
-Following are some example on running textract on S3 object
+Following are some example on running Textract on S3 object
 
 ```python
 # Analyzing text in Image
@@ -132,3 +140,5 @@ The other details for analyze document api can be found at: https://aws.amazon.c
 amazon-textract-serverless-large-scale-document-processing
 https://aws.amazon.com/
 https://aws.amazon.com/textract/pricing/
+
+[back](../../../../../pages/blogs.html)

@@ -2,7 +2,7 @@
 layout: custom
 ---
 
-Current time: {{site.time}} <br>
+Current UTC time: {{site.time}} <br>
 Version: 1.0.0-beta
 
 <center>

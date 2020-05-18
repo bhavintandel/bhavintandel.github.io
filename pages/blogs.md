@@ -2,6 +2,8 @@
 layout: custom
 ---
 
+[back](../)
+
 # Blogs
 
 Following is the list of blogs published by me across various platform.

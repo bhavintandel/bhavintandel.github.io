@@ -13,16 +13,17 @@ Amazon textract has been trained on tens of millions of documents including invo
 
 ## Features
 
-Key-value pair extraction
-Table extraction
-Bounding Box for all the extracted result
-Confidence score for every extracted result
-It can handle multi page document
+* Key-value pair extraction
+* Table extraction
+* Bounding Box for all the extracted result
+* Confidence score for every extracted result
+* It can handle multi page document
 
 ## Usecase
 
 Following is one of the example of how Textract can be used to process large scale documents using complementary aws services.
-Large scale document processing with Amazon Textract
+
+* Large scale document processing with Amazon Textract
 
 ## Usage
 
@@ -34,6 +35,8 @@ It accepts images of format (JPEG/PNG) and PDFs .
 For Images, we can perform synchronous or asynchronous call with reading it as bytes or passing s3 location.
 To process PDF, only asynchronous call is supported via s3 location.
 Initialize the Textract client in python, if you are planning to run extract job on files under s3 bucket then, region_name should be same as the location on data.
+
+![Reciept](assets/IMG_2093.JPG)
 
 #### Detexting text in Image
 
@@ -125,14 +128,19 @@ else:
 ## Findings
 
 Some key findings are:
-It returns information of bouding box from where the text has been extracted.
-It is not angle invariant, that is, document or image to be analyze must be aligned vertically.
+* It returns information of bouding box from where the text has been extracted.
+* It is not angle invariant, that is, document or image to be analyze must be aligned vertically.
 
 ## Pricing
 
-No upfront cost
-Free tier: Detecting Text - 1000 pages/month for first 3 months, Analyzing Document - 100 pages/month for first 3 months
-Detecting Text: First 1 Million pages - $0.0015/page - $1.5/1000 pages, Over 1 Million pages - $0.0006/page - $0.6/1000 pages
+* No upfront cost
+* Free tier: 
+    * Detecting Text - 1000 pages/month for first 3 months
+    * Analyzing Document - 100 pages/month for first 3 months
+* Detecting Text: 
+    * First 1 Million pages - $0.0015/page - $1.5/1000 pages
+    * Over 1 Million pages - $0.0006/page - $0.6/1000 pages
+
 The other details for analyze document api can be found at: https://aws.amazon.com/textract/pricing/
 
 ## Bibliography

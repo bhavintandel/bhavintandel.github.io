@@ -3,3 +3,5 @@ description: projects, blogs, about me
 show_downloads: false
 google_analytics: UA-166956293-1
 theme: jekyll-theme-hacker
+plugins:
+  - jekyll-redirect-from

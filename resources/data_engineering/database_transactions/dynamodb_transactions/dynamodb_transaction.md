@@ -1,5 +1,7 @@
 ## Dynamodb transaction
 
+![dynamodb_logo](./assets/dynamodb_logo.png)
+
 * Out of the box provides: Consistency and Durability from ACID.
 * Atomicity strategy is multi-phase commit protocol.
 * To avoid losing data for coordinator failure, coordinator state is maintained in dynamodb.

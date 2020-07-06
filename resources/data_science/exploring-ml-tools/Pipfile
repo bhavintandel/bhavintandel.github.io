@@ -9,6 +9,7 @@ verify_ssl = true
 boto3 = "*"
 jupyterlab = "*"
 pandas = "*"
+click = "*"
 
 [requires]
 python_version = "3.6"

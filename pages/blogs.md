@@ -15,4 +15,8 @@ Following is the list of blogs published by me across various platform.
 * [Exploring ML Tools - AWS Forecast](../resources/data_science/exploring-ml-tools/aws-forecast/exploring-ml-tools-aws-forecast.html)
 * [Exploring ML Tools - AWS Textract](../resources/data_science/exploring-ml-tools/aws-textract/exploring-ml-tools-aws-textract.html)
 
+## Devops
+
+* [Connecting AWS Glue Endpoint to Jupyter](../resources/devops/jupyter_to_glue/glue_to_jupyter_blog.md)
+
 [back](../)

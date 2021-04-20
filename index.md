@@ -18,3 +18,4 @@ Current Interest: Big Data, Managed ML
 
 * [Blogs](./pages/blogs.html)
 * [Resume](./pages/cv.html)
+* [Cheatsheets](./pages/cheatsheets/cheatsheet_cloud.html)

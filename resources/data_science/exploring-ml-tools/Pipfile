@@ -4,6 +4,7 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
+Pygments = ">=2.7.4"
 
 [packages]
 boto3 = "*"

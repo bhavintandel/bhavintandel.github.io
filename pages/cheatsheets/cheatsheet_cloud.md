@@ -13,3 +13,7 @@ layout: custom
 ## Cloud Technologies: Compute
 
 ![cloud-technologies-compute](../../resources/cheatsheets/cloud/cloud-technologies-compute.jpg)
+
+## Cloud Technologies: Analytics
+
+![cloud-technologies-analytics](../../resources/cheatsheets/cloud/cloud-technologies-analytics.jpg)

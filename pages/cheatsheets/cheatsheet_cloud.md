@@ -17,3 +17,7 @@ layout: custom
 ## Cloud Technologies: Analytics
 
 ![cloud-technologies-analytics](../../resources/cheatsheets/cloud/cloud-technologies-analytics.jpg)
+
+## Cloud Technologies: Databases
+
+![cloud-technologies-databases](../../resources/cheatsheets/cloud/cloud-technologies-databases.jpg)

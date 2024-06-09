@@ -1,0 +1,520 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet/less" type="text/css" href="/theme/stylesheet/style.less">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.1/less.min.js" type="text/javascript"></script>
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="/theme/pygments/github.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="/theme/font-awesome/css/solid.css">
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+<meta name="author" content="Bhavin Tandel" />
+<meta name="description" content="This post will focus on forecasting services offered by Amazon Web Service called as AWS Forecast. Companies have been performing forecast on business outcome since long time spanning from financial market forecast to retail product demand forecast. Earlier Statistical methods and Advanced Mathematics have been used to predict the future …" />
+<meta name="keywords" content="ml">
+
+
+  <meta property="og:site_name" content="Professional Portfolio"/>
+  <meta property="og:title" content="Exploring ML Tools - Amazon Forecast"/>
+  <meta property="og:description" content="This post will focus on forecasting services offered by Amazon Web Service called as AWS Forecast. Companies have been performing forecast on business outcome since long time spanning from financial market forecast to retail product demand forecast. Earlier Statistical methods and Advanced Mathematics have been used to predict the future …"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="/blogs/ml-aws-forecast/2024/05/"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2024-05-08 22:31:00+01:00"/>
+  <meta property="article:modified_time" content="2024-05-08 22:31:00+01:00"/>
+  <meta property="article:author" content="/author/bhavin-tandel.html">
+  <meta property="article:section" content="blogs"/>
+  <meta property="article:tag" content="ml"/>
+  <meta property="og:image" content="">
+
+  <title>Professional Portfolio &ndash; Exploring ML Tools - Amazon Forecast</title>
+
+
+</head>
+<body class="light-theme">
+
+<aside>
+  <div>
+    <a href="/">
+      <img src="/theme/img/profile.png" alt="" title="">
+    </a>
+
+    <h1>
+      <a href="/"></a>
+    </h1>
+
+
+
+    <nav>
+      <ul class="list">
+
+
+            <li>
+              <a target="_self"
+                 href="/pages/about.html#about">
+                About
+              </a>
+            </li>
+            <li>
+              <a target="_self"
+                 href="/pages/contact.html#contact">
+                Contact
+              </a>
+            </li>
+            <li>
+              <a target="_self"
+                 href="/pages/resume.html#resume">
+                Resume
+              </a>
+            </li>
+
+      </ul>
+    </nav>
+
+    <ul class="social">
+      <li>
+        <a class="sc-LinkedIn"
+           href="https://www.linkedin.com/in/bhavintandel/"
+           target="_blank">
+          <i class="fa-brands fa-LinkedIn"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-Github"
+           href="https://github.com/bhavintandel"
+           target="_blank">
+          <i class="fa-brands fa-Github"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</aside>
+  <main>
+
+<nav>
+  <a href="/">Home</a>
+
+  <a href="/archives.html">Archives</a>
+  <a href="/categories.html">Categories</a>
+  <a href="/tags.html">Tags</a>
+
+
+</nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="ml-aws-forecast">Exploring ML Tools - Amazon Forecast</h1>
+    <p>
+      Posted on Wed 08 May 2024 in <a href="/category/blogs.html">blogs</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>This post will focus on forecasting services offered by Amazon Web Service called as <strong>AWS Forecast</strong>.
+Companies have been performing forecast on business outcome since long time spanning from 
+financial market forecast to retail product demand forecast. Earlier Statistical methods and 
+Advanced Mathematics have been used to predict the future outcomes, however, with advancement of 
+machine learning and available of big data, we are able to use deep learning techniques to make accurate predictions.</p>
+<p><img alt="aws-forecast-working" src="/blogs/ml-aws-forecast/2024/05/forecast-working.png"></p>
+<h2>Introduction</h2>
+<p>In basic, forecasting is the method of predicting future based on past and present data. It consists of
+a <strong>model</strong> to which we feed historical time-based data <strong>y</strong> and we get future value of <strong>y</strong>. For example,
+we have model to predict future value of a stock then, we would feed historical data of stock to it 
+and we will get the predicted value of the stock. </p>
+<p>AWS Forecast is a managed service which provides the platform to users for running the forecasting on
+their data without the need to maintain the complex ML infrastructure. It is based on DeepAR+ algorithm which 
+is supervised algorithm for forecasting one-dimensional time series using Recurrent Neural Networks.</p>
+<p>It involves datasets which is used to train predictors and generate forecasts.</p>
+<h2>How it Works?</h2>
+<p>It consists of,
+* Dataset and Dataset Groups
+    * You create Dataset Group and a Forecasting domain(Retail/Inventory Planning/Custom/..) based on your usecase. 
+    The complete list can be found <a href="https://docs.aws.amazon.com/forecast/latest/dg/howitworks-domains-ds-types.html">here</a>
+    * <img align="center" width="400" height="250" src="/blogs/ml-aws-forecast/2024/05/dataset-group-creation.png">
+    * Each dataset group can have three datasets, one of each type:
+        * target time series(required)
+        * related time series(optional)
+        * item metadata(optional) - only used when algorithm used is DeepAR+
+    * <img align="center" width="400" height="250" src="/blogs/ml-aws-forecast/2024/05/dataset-creation.png">
+    * You will have to select the frequency of your data. For example, in energy meter, we might take reading every 30 minutes. 
+    * Following columns have to be mandatory present in target and related time series:
+        * <code>timestamp</code> (must be of timestamp type)
+        * <code>item_id</code> (must be of string type)
+        * Data type of all other columns must be of type string.
+    * <img align="center" width="400" height="250" src="/blogs/ml-aws-forecast/2024/05/dataset-import-job.png">
+    * Target time series must also contain <code>target_value</code> column, which is the column you are planning to forecast.</p>
+<ul>
+<li>
+<p>Predictors</p>
+<ul>
+<li>It creates trained model which is called as <strong>predictors</strong>. </li>
+<li>Users select Forecast horizon, which indicates how far you want to predict.</li>
+<li>One can manually select algorithm or select AutoML feature for automatic algorithm selection.</li>
+<li>There are some additional features available for fine tuning the forecasts.</li>
+<li><img align="center" width="400" height="250" src="/blogs/ml-aws-forecast/2024/05/automl_predictor.png"></li>
+</ul>
+</li>
+<li>
+<p>Forecasts</p>
+<ul>
+<li>We can create forecast on the predictor which is created above.</li>
+<li>You can select up to 5 quantile value including mean. You can choose based on your business need which can be 
+   either under-forecasting or over-forecasting. For example, 0.05 quantile means, the true data is expected 
+   to be lower than predicted data 5% of time. If we take example of predicting pandemic and number of cases, we would
+   want quantile to be 0.99 for predicting hospital bed, because we don't want to under-forecast the resources in this scenario.</li>
+<li><img align="center" width="400" height="250" src="/blogs/ml-aws-forecast/2024/05/create-forecast.png"></li>
+</ul>
+</li>
+<li>
+<p>Forecast Lookup</p>
+<ul>
+<li>We can lookup in the console itself as shown in following screen shot.</li>
+<li><img align="center" width="400" height="250" src="/blogs/ml-aws-forecast/2024/05/forecast-lookup-US-2.png"></li>
+</ul>
+</li>
+</ul>
+<h2>Features</h2>
+<ul>
+<li>Automatically identifies key attributes for forecasting.</li>
+<li>Manual Algorithm selection: DeepAR+, ARIMA, Prophet, Exponential Smoothing (ETS), Non-Parametric Time Series (NPTS). 
+The detail list can be found <a href="https://docs.aws.amazon.com/forecast/latest/dg/aws-forecast-choosing-recipes.html">here</a>.</li>
+<li>Provide AutoML option for model training which automates complex tasks(algorithm selection, hyperparameter tuning, etc).</li>
+<li>Automatically fill missing values for target and related time series.</li>
+</ul>
+<h2>Usecase</h2>
+<p>Following are some usecases for AWS Forecast:</p>
+<ul>
+<li>Estimating product demand.</li>
+<li>Forecasting weather.</li>
+<li>Predicting web traffic.</li>
+<li>Estimating pandemic cases.</li>
+</ul>
+<h2>Usage</h2>
+<p>The forecast can be used via:
+* AWS cli
+* AWS Console
+* AWS SDK</p>
+<h2>Input</h2>
+<p>We will be using data of covid19 cases available on <a href="https://www.kaggle.com/c/covid19-global-forecasting-week-5/data">kaggle</a>.</p>
+<p>Following is the screenshot of sample data.
+<img alt="sample-data" src="/blogs/ml-aws-forecast/2024/05/sample-data.png"></p>
+<p>The schema needs to be adapted based on AWS forecast requirement and thus following is the schema for it,</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="s2">&quot;Attributes&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;AttributeName&quot;</span><span class="p">:</span> <span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;AttributeType&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">},</span>
+                <span class="p">{</span><span class="s2">&quot;AttributeName&quot;</span><span class="p">:</span> <span class="s2">&quot;County&quot;</span><span class="p">,</span> <span class="s2">&quot;AttributeType&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">},</span>
+                <span class="p">{</span><span class="s2">&quot;AttributeName&quot;</span><span class="p">:</span> <span class="s2">&quot;Province_State&quot;</span><span class="p">,</span> <span class="s2">&quot;AttributeType&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">},</span>
+                <span class="p">{</span><span class="s2">&quot;AttributeName&quot;</span><span class="p">:</span> <span class="s2">&quot;item_id&quot;</span><span class="p">,</span> <span class="s2">&quot;AttributeType&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">},</span>
+                <span class="p">{</span><span class="s2">&quot;AttributeName&quot;</span><span class="p">:</span> <span class="s2">&quot;Population&quot;</span><span class="p">,</span> <span class="s2">&quot;AttributeType&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">},</span>
+                <span class="p">{</span><span class="s2">&quot;AttributeName&quot;</span><span class="p">:</span> <span class="s2">&quot;Weight&quot;</span><span class="p">,</span> <span class="s2">&quot;AttributeType&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">},</span>
+                <span class="p">{</span><span class="s2">&quot;AttributeName&quot;</span><span class="p">:</span> <span class="s2">&quot;timestamp&quot;</span><span class="p">,</span> <span class="s2">&quot;AttributeType&quot;</span><span class="p">:</span> <span class="s2">&quot;timestamp&quot;</span><span class="p">},</span>
+                <span class="p">{</span><span class="s2">&quot;AttributeName&quot;</span><span class="p">:</span> <span class="s2">&quot;ConfirmedCases&quot;</span><span class="p">,</span> <span class="s2">&quot;AttributeType&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">},</span>
+                <span class="p">{</span><span class="s2">&quot;AttributeName&quot;</span><span class="p">:</span> <span class="s2">&quot;target_value&quot;</span><span class="p">,</span> <span class="s2">&quot;AttributeType&quot;</span><span class="p">:</span> <span class="s2">&quot;float&quot;</span><span class="p">}]</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>We will be forecasting Confirmed Cases for various countries which is named as <strong>item_id</strong>.</p>
+<h2>Process</h2>
+<p>Following steps will describe the forecasting using python sdk.</p>
+<ul>
+<li>Initializing AWS forecast client</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">boto3</span>
+
+<span class="c1"># Creating client to access forecast</span>
+<span class="n">forecast_client</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">client</span><span class="p">(</span><span class="s1">&#39;forecast&#39;</span><span class="p">,</span> <span class="n">region_name</span><span class="o">=</span><span class="s1">&#39;eu-west-1&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<ul>
+<li>Creating Dataset group</li>
+</ul>
+<p>We will be creating dataset group with name as <strong>covid19</strong>.</p>
+<div class="highlight"><pre><span></span><code><span class="n">dataset_group_name</span> <span class="o">=</span> <span class="s2">&quot;covid19_week5&quot;</span>
+<span class="n">forecast_domain</span> <span class="o">=</span> <span class="s2">&quot;CUSTOM&quot;</span>
+
+<span class="c1"># Creating dataset group</span>
+<span class="n">dataset_group_response</span> <span class="o">=</span> <span class="n">forecast_client</span><span class="o">.</span><span class="n">create_dataset_group</span><span class="p">(</span>
+    <span class="n">DatasetGroupName</span><span class="o">=</span><span class="n">dataset_group_name</span><span class="p">,</span>
+    <span class="n">Domain</span><span class="o">=</span><span class="n">forecast_domain</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<ul>
+<li>Creating Target time series dataset</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># Creating Target time series dataset</span>
+<span class="n">dataset_response</span> <span class="o">=</span> <span class="n">forecast_client</span><span class="o">.</span><span class="n">create_dataset</span><span class="p">(</span>
+    <span class="n">DatasetName</span><span class="o">=</span><span class="s1">&#39;covid19_week5_confirmedcases_train&#39;</span><span class="p">,</span>
+    <span class="n">Domain</span><span class="o">=</span><span class="s1">&#39;CUSTOM&#39;</span><span class="p">,</span>
+    <span class="n">DatasetType</span><span class="o">=</span><span class="s1">&#39;TARGET_TIME_SERIES&#39;</span><span class="p">,</span>
+    <span class="n">DataFrequency</span><span class="o">=</span><span class="s1">&#39;D&#39;</span><span class="p">,</span>
+    <span class="n">Schema</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Attributes&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;AttributeName&quot;</span><span class="p">:</span> <span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;AttributeType&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">},</span>
+                <span class="p">{</span><span class="s2">&quot;AttributeName&quot;</span><span class="p">:</span> <span class="s2">&quot;County&quot;</span><span class="p">,</span> <span class="s2">&quot;AttributeType&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">},</span>
+                <span class="p">{</span><span class="s2">&quot;AttributeName&quot;</span><span class="p">:</span> <span class="s2">&quot;Province_State&quot;</span><span class="p">,</span> <span class="s2">&quot;AttributeType&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">},</span>
+                <span class="p">{</span><span class="s2">&quot;AttributeName&quot;</span><span class="p">:</span> <span class="s2">&quot;item_id&quot;</span><span class="p">,</span> <span class="s2">&quot;AttributeType&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">},</span>
+                <span class="p">{</span><span class="s2">&quot;AttributeName&quot;</span><span class="p">:</span> <span class="s2">&quot;Population&quot;</span><span class="p">,</span> <span class="s2">&quot;AttributeType&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">},</span>
+                <span class="p">{</span><span class="s2">&quot;AttributeName&quot;</span><span class="p">:</span> <span class="s2">&quot;Weight&quot;</span><span class="p">,</span> <span class="s2">&quot;AttributeType&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">},</span>
+                <span class="p">{</span><span class="s2">&quot;AttributeName&quot;</span><span class="p">:</span> <span class="s2">&quot;timestamp&quot;</span><span class="p">,</span> <span class="s2">&quot;AttributeType&quot;</span><span class="p">:</span> <span class="s2">&quot;timestamp&quot;</span><span class="p">},</span>
+                <span class="p">{</span><span class="s2">&quot;AttributeName&quot;</span><span class="p">:</span> <span class="s2">&quot;ConfirmedCases&quot;</span><span class="p">,</span> <span class="s2">&quot;AttributeType&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">},</span>
+                <span class="p">{</span><span class="s2">&quot;AttributeName&quot;</span><span class="p">:</span> <span class="s2">&quot;target_value&quot;</span><span class="p">,</span> <span class="s2">&quot;AttributeType&quot;</span><span class="p">:</span> <span class="s2">&quot;float&quot;</span><span class="p">}]</span>
+        <span class="p">}</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<ul>
+<li>Import data to the dataset.</li>
+</ul>
+<p>We will import the data from s3 bucket into the dataset which should match to schema of it. And role should have get object permission 
+on the bucket.  For instance,</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+    <span class="s2">&quot;Version&quot;</span><span class="p">:</span> <span class="s2">&quot;2012-10-17&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Statement&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;Action&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&quot;s3:ListBucket&quot;</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;Effect&quot;</span><span class="p">:</span> <span class="s2">&quot;Allow&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Resource&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&quot;arn:aws:s3:::&lt;bucket-name&gt;&quot;</span>
+            <span class="p">]</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;Action&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&quot;s3:GetObject&quot;</span><span class="p">,</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;Effect&quot;</span><span class="p">:</span> <span class="s2">&quot;Allow&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Resource&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&quot;arn:aws:s3:::&lt;bucket-name&gt;/*&quot;</span>
+            <span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># Creating dataset import job</span>
+<span class="n">import_job_response</span> <span class="o">=</span> <span class="n">forecast_client</span><span class="o">.</span><span class="n">create_dataset_import_job</span><span class="p">(</span>
+    <span class="n">DatasetImportJobName</span><span class="o">=</span><span class="s1">&#39;week5_confirmed_cases_import&#39;</span><span class="p">,</span>
+    <span class="n">DatasetArn</span><span class="o">=</span><span class="n">dataset_response</span><span class="p">[</span><span class="s1">&#39;DatasetArn&#39;</span><span class="p">],</span>
+    <span class="n">DataSource</span><span class="o">=</span><span class="p">{</span>
+        <span class="s1">&#39;S3Config&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;Path&#39;</span><span class="p">:</span> <span class="s1">&#39;s3://exploring-ml-tools-eu-west-1/amazon-forecast/assets/covid_19_week_5/target_time_series/confirmedcases/&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;RoleArn&#39;</span><span class="p">:</span> <span class="s1">&#39;arn:aws:iam::&lt;account_id&gt;:role/service-role/AmazonForecast-ExecutionRole-1589874597925&#39;</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="n">TimestampFormat</span><span class="o">=</span><span class="s1">&#39;yyyy-MM-dd&#39;</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<ul>
+<li>Link dataset to dataset group.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># Update dataset group with dataset</span>
+<span class="n">update_ds_group_response</span> <span class="o">=</span> <span class="n">forecast_client</span><span class="o">.</span><span class="n">update_dataset_group</span><span class="p">(</span>
+    <span class="n">DatasetGroupArn</span><span class="o">=</span><span class="n">dataset_group_response</span><span class="p">[</span><span class="s1">&#39;DatasetGroupArn&#39;</span><span class="p">],</span>
+    <span class="n">DatasetArns</span><span class="o">=</span><span class="p">[</span>
+        <span class="n">dataset_response</span><span class="p">[</span><span class="s1">&#39;DatasetArn&#39;</span><span class="p">]</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<ul>
+<li>Creating predictor</li>
+</ul>
+<p>We will execute command to create predictor.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Create predictor using automl</span>
+
+<span class="n">predictor_response</span> <span class="o">=</span> <span class="n">forecast_client</span><span class="o">.</span><span class="n">create_predictor</span><span class="p">(</span>
+    <span class="n">PredictorName</span><span class="o">=</span><span class="s1">&#39;covid19_confirmed_case_automl&#39;</span><span class="p">,</span>
+    <span class="n">ForecastHorizon</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span>
+    <span class="n">PerformAutoML</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">PerformHPO</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">InputDataConfig</span><span class="o">=</span><span class="p">{</span>
+        <span class="s1">&#39;DatasetGroupArn&#39;</span><span class="p">:</span> <span class="n">dataset_group_response</span><span class="p">[</span><span class="s1">&#39;DatasetGroupArn&#39;</span><span class="p">]</span>
+    <span class="p">},</span>
+    <span class="n">FeaturizationConfig</span><span class="o">=</span><span class="p">{</span>
+        <span class="s1">&#39;ForecastFrequency&#39;</span><span class="p">:</span> <span class="s1">&#39;D&#39;</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<p>This process will take time and the progress can be tracked as,</p>
+<div class="highlight"><pre><span></span><code><span class="n">forecast_client</span><span class="o">.</span><span class="n">list_predictors</span><span class="p">(</span>
+    <span class="n">Filters</span><span class="o">=</span><span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s1">&#39;Key&#39;</span><span class="p">:</span> <span class="s1">&#39;DatasetGroupArn&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;Value&#39;</span><span class="p">:</span> <span class="n">dataset_group_response</span><span class="p">[</span><span class="s1">&#39;DatasetGroupArn&#39;</span><span class="p">],</span>
+            <span class="s1">&#39;Condition&#39;</span><span class="p">:</span> <span class="s1">&#39;IS&#39;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<ul>
+<li>Creating forecast</li>
+</ul>
+<p>We can create forecast using predictor and passing custom quantile list if required.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Create forecast</span>
+<span class="n">forecast_response</span> <span class="o">=</span> <span class="n">forecast_client</span><span class="o">.</span><span class="n">create_forecast</span><span class="p">(</span>
+    <span class="n">ForecastName</span><span class="o">=</span><span class="s1">&#39;covid19_automl_forecast&#39;</span><span class="p">,</span>
+    <span class="n">PredictorArn</span><span class="o">=</span><span class="n">predictor_response</span><span class="p">[</span><span class="s1">&#39;PredictorArn&#39;</span><span class="p">],</span>
+    <span class="n">ForecastTypes</span><span class="o">=</span><span class="p">[</span>
+        <span class="s2">&quot;0.1&quot;</span><span class="p">,</span> <span class="s2">&quot;0.5&quot;</span><span class="p">,</span> <span class="s2">&quot;0.9&quot;</span><span class="p">,</span> <span class="s2">&quot;0.95&quot;</span><span class="p">,</span> <span class="s2">&quot;0.99&quot;</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<p>The progress of forecast job can be tracked as,</p>
+<div class="highlight"><pre><span></span><code><span class="n">forecast_client</span><span class="o">.</span><span class="n">list_forecasts</span><span class="p">(</span>
+    <span class="n">Filters</span><span class="o">=</span><span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s1">&#39;Key&#39;</span><span class="p">:</span> <span class="s1">&#39;PredictorArn&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;Value&#39;</span><span class="p">:</span> <span class="n">predictor_response</span><span class="p">[</span><span class="s1">&#39;PredictorArn&#39;</span><span class="p">],</span>
+            <span class="s1">&#39;Condition&#39;</span><span class="p">:</span> <span class="s1">&#39;IS&#39;</span>
+        <span class="p">},</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<ul>
+<li>Export the forecast data to S3 bucket</li>
+</ul>
+<p>After completion of forecasting job, we can export the forecast value to S3 bucket and then utilize it based on
+our requirements like directly querying from Athena or loading it into data mart, etc.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Create forecast export job</span>
+<span class="n">export_forecast_response</span> <span class="o">=</span> <span class="n">forecast_client</span><span class="o">.</span><span class="n">create_forecast_export_job</span><span class="p">(</span>
+    <span class="n">ForecastExportJobName</span><span class="o">=</span><span class="s1">&#39;Week2Foecast&#39;</span><span class="p">,</span>
+    <span class="n">ForecastArn</span><span class="o">=</span><span class="n">forecast_response</span><span class="p">[</span><span class="s1">&#39;ForecastArn&#39;</span><span class="p">],</span>
+    <span class="n">Destination</span><span class="o">=</span><span class="p">{</span>
+        <span class="s1">&#39;S3Config&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;Path&#39;</span><span class="p">:</span> <span class="s1">&#39;s3://exploring-ml-tools-eu-west-1/amazon-forecast/assets/covid_19_week_5/week6_predicted&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;RoleArn&#39;</span><span class="p">:</span> <span class="s1">&#39;arn:aws:iam::&lt;account_id&gt;:role/service-role/AmazonForecast-ExecutionRole-1589874597925&#39;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<h2>Output</h2>
+<p>We can directly make a look on forecast in console as shown below. 
+As you can see the forecast has been generated for our supplied quantile.</p>
+<p><img align="center" width="400" height="250" src="/blogs/ml-aws-forecast/2024/05/forecast-lookup-US-3.png"></p>
+<p>The output is the csv files which can be exported to s3 bucket and then utilized. </p>
+<p><img align="center" width="400" height="250" src="/blogs/ml-aws-forecast/2024/05/predicted-s3-files.png"></p>
+<h2>Cleanup</h2>
+<p>Following are the snippet to clean up the above created resources. As the resources are dependent on each other,
+the deletion should be done in order and waiter should be use.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Delete forecast</span>
+<span class="n">forecast_client</span><span class="o">.</span><span class="n">delete_forecast</span><span class="p">(</span>
+    <span class="n">ForecastArn</span><span class="o">=</span><span class="n">forecast_response</span><span class="p">[</span><span class="s1">&#39;ForecastArn&#39;</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="c1"># Delete predictor</span>
+<span class="n">forecast_client</span><span class="o">.</span><span class="n">delete_predictor</span><span class="p">(</span>
+    <span class="n">PredictorArn</span><span class="o">=</span><span class="n">predictor_response</span><span class="p">[</span><span class="s1">&#39;PredictorArn&#39;</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="c1"># Delete dataset import job</span>
+<span class="n">forecast_client</span><span class="o">.</span><span class="n">delete_dataset_import_job</span><span class="p">(</span>
+    <span class="n">DatasetImportJobArn</span><span class="o">=</span><span class="n">import_job_response</span><span class="p">[</span><span class="s1">&#39;DatasetImportJobArn&#39;</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="c1"># Delete Dataset</span>
+<span class="n">forecast_client</span><span class="o">.</span><span class="n">delete_dataset</span><span class="p">(</span>
+    <span class="n">DatasetArn</span><span class="o">=</span><span class="n">dataset_response</span><span class="p">[</span><span class="s1">&#39;DatasetArn&#39;</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="c1"># Delete Dataset Group</span>
+<span class="c1"># we can delete dataset group without deleting dataset</span>
+<span class="n">forecast_client</span><span class="o">.</span><span class="n">delete_dataset_group</span><span class="p">(</span>
+    <span class="n">DatasetGroupArn</span><span class="o">=</span><span class="n">dataset_group_response</span><span class="p">[</span><span class="s1">&#39;DatasetGroupArn&#39;</span><span class="p">]</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<h2>Findings</h2>
+<ul>
+<li>Easy to use tool to generate forecast.</li>
+<li>Can auto fill the missing values.</li>
+</ul>
+<h2>Pricing</h2>
+<ul>
+<li>No upfront cost</li>
+<li>Forecast are billed in unit of 1000</li>
+<li>Free tier: <ul>
+<li>Generate Forecasts - Up to 10K time series forecast/month for first 2 month</li>
+<li>Data Storage - Up to 10/month for first 2 months</li>
+<li>Training hours - Up to 10 hrs/month for first 2 months</li>
+</ul>
+</li>
+<li>On demand: <ul>
+<li>Generate Forecasts - $0.60 for 1000 forecasts</li>
+<li>Data Storage - $0.088 per GB</li>
+<li>Training hours - $0.24 per hour</li>
+</ul>
+</li>
+<li>Detailed example of pricing can be found and <a href="https://aws.amazon.com/forecast/pricing/">Amazon Forecast pricing page</a>.</li>
+</ul>
+<h2>Bibliography</h2>
+<ul>
+<li><a href="https://aws.amazon.com">AWS</a></li>
+<li><a href="https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/forecast.html">Boto3 forecast client</a></li>
+</ul>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="/tag/ml.html">ml</a>
+    </p>
+  </div>
+
+
+
+
+
+
+</article>
+
+<footer>
+<p>&copy; 2024 </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Professional Portfolio ",
+  "url" : "",
+  "image": "",
+  "description": ""
+}
+</script>
+</body>
+</html>

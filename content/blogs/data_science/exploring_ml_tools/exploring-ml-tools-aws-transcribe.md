@@ -1,15 +1,18 @@
----
-layout: custom
----
+Title: Exploring ML Tools - Transcribe
+Date: 2020-05-29 18:53
+Modified: 2020-05-29 18:53
+Category: blogs
+Tags: ml
+slug: ml-aws-transcribe
 
-# Exploring ML Tools - AWS Transcribe
 
 Audio is part of our life which exists in many forms like, voice messages, podcasts, songs, 
 lectures, recorded conversations etc. These files are really hard to process by computer and so it just stays in magnetic 
 disk or expensive disk and never actually used proactively unless its needed. However, machines have become very 
 intelligent in process texts. And thus, so we can convert audio to text and put machine to work for getting insight. 
 
-![AWS Transcribe Logo](./assets/AWS-Transcribe-working.jpg)
+![AWS Transcribe Logo]({attach}/images/blogs/data_science/exploring-ml-tools/aws-transcribe/aws-transcribe-working.jpg)
+
 ## Introduction
 
 There have pretty good research in speech-to-text conversion with model like Hidden Markow Models(HMM), 
@@ -176,5 +179,3 @@ you will need to enable it on your AWS account.
 * [Kaggle Data](https://www.kaggle.com/wiradkp/mini-speech-diarization)
 * [AWS Docs](https://docs.aws.amazon.com/transcribe/latest/dg/what-is-transcribe.html)
 * [AWS Transcribe slide](https://www.slideshare.net/AmazonWebServices/automate-for-efficiency-with-amazon-transcribe-and-amazon-translate)
-
-[back](../../../../../pages/blogs.html)

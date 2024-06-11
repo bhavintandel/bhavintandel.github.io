@@ -1,9 +1,10 @@
 Title: Exploring ML Tools - Amazon Textract
-Date: 2024-05-08 22:31
-Modified: 2024-05-08 22:31
+Date: 2020-05-18 00:29
+Modified: 2020-05-18 00:29
 Category: blogs
 Tags: ml
 slug: ml-aws-textract
+
 
 Documents have been part of our lives since very long time, however, its not always so easy to find something in document. With the new advances in machine learning we can actually digitize our document and thus put it to good use.
 
@@ -37,7 +38,7 @@ For Images, we can perform synchronous or asynchronous call with reading it as b
 To process PDF, only asynchronous call is supported via s3 location.
 Initialize the Textract client in python, if you are planning to run extract job on files under s3 bucket then, region_name should be same as the location on data.
 
-![Reciept]({attach}../../../resources/data_science/exploring-ml-tools/aws-textract/assets/IMG_2093.JPG)
+![Reciept]({attach}/images/blogs/data_science/exploring-ml-tools/aws-textract/IMG_2093.JPG)
 
 #### Detexting text in Image
 

@@ -1,4 +1,10 @@
-# AWS GluePyspark Locally
+Title: Blog: AWS GluePyspark Locally
+Date: 2020-05-16 21:14
+Modified: 2020-05-16 21:14
+Category: blogs
+Tags: devops
+slug: devops-aws-gluepyspark-locally
+
 
 ## Download and install maven
 

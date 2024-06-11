@@ -1,6 +1,6 @@
 Title: Exploring ML Tools - Amazon Forecast
-Date: 2024-05-08 22:31
-Modified: 2024-05-08 22:31
+Date: 2020-05-21 08:13
+Modified: 2020-05-21 08:13
 Category: blogs
 Tags: ml
 slug: ml-aws-forecast
@@ -11,7 +11,7 @@ financial market forecast to retail product demand forecast. Earlier Statistical
 Advanced Mathematics have been used to predict the future outcomes, however, with advancement of 
 machine learning and available of big data, we are able to use deep learning techniques to make accurate predictions.
 
-![aws-forecast-working]({attach}../../../resources/data_science/exploring-ml-tools/aws-forecast/assets/forecast-working.png)
+![aws-forecast-working]({attach}/images/blogs/data_science/exploring-ml-tools/aws-forecast/forecast-working.png)
 
 ## Introduction
 
@@ -32,18 +32,18 @@ It consists of,
 * Dataset and Dataset Groups
     * You create Dataset Group and a Forecasting domain(Retail/Inventory Planning/Custom/..) based on your usecase. 
     The complete list can be found [here](https://docs.aws.amazon.com/forecast/latest/dg/howitworks-domains-ds-types.html)
-    * <img align="center" width="400" height="250" src="{attach}../../../resources/data_science/exploring-ml-tools/aws-forecast/assets/dataset-group-creation.png">
+    * <img align="center" width="400" height="250" src="{attach}/images/blogs/data_science/exploring-ml-tools/aws-forecast/dataset-group-creation.png">
     * Each dataset group can have three datasets, one of each type:
         * target time series(required)
         * related time series(optional)
         * item metadata(optional) - only used when algorithm used is DeepAR+
-    * <img align="center" width="400" height="250" src="{attach}../../../resources/data_science/exploring-ml-tools/aws-forecast/assets/dataset-creation.png">
+    * <img align="center" width="400" height="250" src="{attach}/images/blogs/data_science/exploring-ml-tools/aws-forecast/dataset-creation.png">
     * You will have to select the frequency of your data. For example, in energy meter, we might take reading every 30 minutes. 
     * Following columns have to be mandatory present in target and related time series:
         * `timestamp` (must be of timestamp type)
         * `item_id` (must be of string type)
         * Data type of all other columns must be of type string.
-    * <img align="center" width="400" height="250" src="{attach}../../../resources/data_science/exploring-ml-tools/aws-forecast/assets/dataset-import-job.png">
+    * <img align="center" width="400" height="250" src="{attach}/images/blogs/data_science/exploring-ml-tools/aws-forecast/dataset-import-job.png">
     * Target time series must also contain `target_value` column, which is the column you are planning to forecast.
         
 * Predictors
@@ -51,7 +51,7 @@ It consists of,
     * Users select Forecast horizon, which indicates how far you want to predict.
     * One can manually select algorithm or select AutoML feature for automatic algorithm selection.
     * There are some additional features available for fine tuning the forecasts.
-    * <img align="center" width="400" height="250" src="{attach}../../../resources/data_science/exploring-ml-tools/aws-forecast/assets/automl_predictor.png">
+    * <img align="center" width="400" height="250" src="{attach}/images/blogs/data_science/exploring-ml-tools/aws-forecast/automl_predictor.png">
      
 * Forecasts
     * We can create forecast on the predictor which is created above.
@@ -59,11 +59,11 @@ It consists of,
        either under-forecasting or over-forecasting. For example, 0.05 quantile means, the true data is expected 
        to be lower than predicted data 5% of time. If we take example of predicting pandemic and number of cases, we would
        want quantile to be 0.99 for predicting hospital bed, because we don't want to under-forecast the resources in this scenario.
-    * <img align="center" width="400" height="250" src="{attach}../../../resources/data_science/exploring-ml-tools/aws-forecast/assets/create-forecast.png">
+    * <img align="center" width="400" height="250" src="{attach}/images/blogs/data_science/exploring-ml-tools/aws-forecast/create-forecast.png">
 
 * Forecast Lookup
     * We can lookup in the console itself as shown in following screen shot.
-    * <img align="center" width="400" height="250" src="{attach}../../../resources/data_science/exploring-ml-tools/aws-forecast/assets/forecast-lookup-US-2.png">
+    * <img align="center" width="400" height="250" src="{attach}/images/blogs/data_science/exploring-ml-tools/aws-forecast/forecast-lookup-US-2.png">
 
 ## Features
 
@@ -95,7 +95,7 @@ The forecast can be used via:
 We will be using data of covid19 cases available on [kaggle](https://www.kaggle.com/c/covid19-global-forecasting-week-5/data).
 
 Following is the screenshot of sample data.
-![sample-data]({attach}../../../resources/data_science/exploring-ml-tools/aws-forecast/assets/sample-data.png)
+![sample-data]({attach}/images/blogs/data_science/exploring-ml-tools/aws-forecast/sample-data.png)
 
 
 The schema needs to be adapted based on AWS forecast requirement and thus following is the schema for it,
@@ -312,12 +312,12 @@ export_forecast_response = forecast_client.create_forecast_export_job(
 We can directly make a look on forecast in console as shown below. 
 As you can see the forecast has been generated for our supplied quantile.
 
-<img align="center" width="400" height="250" src="{attach}../../../resources/data_science/exploring-ml-tools/aws-forecast/assets/forecast-lookup-US-3.png">
+<img align="center" width="400" height="250" src="{attach}/images/blogs/data_science/exploring-ml-tools/aws-forecast/forecast-lookup-US-3.png">
 
 
 The output is the csv files which can be exported to s3 bucket and then utilized. 
 
-<img align="center" width="400" height="250" src="{attach}../../../resources/data_science/exploring-ml-tools/aws-forecast/assets/predicted-s3-files.png">
+<img align="center" width="400" height="250" src="{attach}/images/blogs/data_science/exploring-ml-tools/aws-forecast/predicted-s3-files.png">
 
 ## Cleanup
 

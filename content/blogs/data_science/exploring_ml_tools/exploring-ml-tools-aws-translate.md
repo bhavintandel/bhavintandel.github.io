@@ -1,8 +1,10 @@
----
-layout: custom
----
+Title: Exploring ML Tools - AWS Translate
+Date: 2020-05-28 22:19
+Modified: 2020-05-28 22:19
+Category: blogs
+Tags: ml
+slug: ml-aws-translate
 
-# Exploring ML Tools - AWS Translate
 
 According to one of the surveys there are roughly 6500 languages spoken in whole world.
 However, I am sure that actual number is definitely more. So, it 99.9% impossible to
@@ -12,7 +14,7 @@ then it would really take the pain away in understanding someone with foreign la
 So, in this blog we will focus on an AWS tool names **Translate** that does what it says, 
 that is, it translates one language to other.
 
-![AWS Translate on multiple services](assets/Amazon_Translate_SOCIAL.png)
+![AWS Translate on multiple services]({attach}/images/blogs/data_science/exploring-ml-tools/aws-translate/Amazon_Translate_SOCIAL.png)
 
 ## Introduction
 

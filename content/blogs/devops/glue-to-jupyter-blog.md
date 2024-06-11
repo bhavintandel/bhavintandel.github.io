@@ -1,8 +1,14 @@
-# Connect Jupyter Notebook to AWS Glue Endpoint
+Title: Blog: Connect Jupyter Notebook to AWS Glue Endpoint
+Date: 2020-11-12 12:00
+Modified: 2020-11-12 12:00
+Category: blogs
+Tags: devops
+slug: devops-jupyter-connect-aws-glue
+
 
 If I am not wrong, then almost everyone in data engineering industry have heard of Apache Spark and if not (highly unlikely) then you are just one google search away for ample number resources. This post will revolve around Spark, AWS Glue, notebook and binding these tools for optimal results.
 
-![The jupyter pipeline](assets/jupyter_pipeline.png)
+![The jupyter pipeline]({attach}/images/blogs/devops/jupyter_to_glue/jupyter_pipeline.png)
 
 ## Introduction
 
@@ -69,17 +75,17 @@ Leave the shell open for connection to be maintained or you can detach it using 
 
 Now we launch jupyter server using command: `jupyter notebook`
 
-![Jupyter Notebook](assets/jupyter_notebook.png)
+![Jupyter Notebook]({attach}/images/blogs/devops/jupyter_to_glue/jupyter_notebook.png)
 
 As you can see now you can find two new kernels PySpark (for python) and Spark (for scala).
 
-![Spark Scala](assets/spark_scala.png)
+![Spark Scala]({attach}/images/blogs/devops/jupyter_to_glue/spark_scala.png)
 
 As you can see we can access Glue Spark and also save the notebook when the endpoint is stopped.
 
 Also, you can access livy server UI to monitor multiple sessions by going to:
 
-![livy server](assets/livy_server.png)
+![livy server]({attach}/images/blogs/devops/jupyter_to_glue/livy_server.png)
 
 
 ## Benefits

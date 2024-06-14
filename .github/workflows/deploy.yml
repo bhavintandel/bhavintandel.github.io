@@ -40,6 +40,7 @@ jobs:
       - name: Install Flex theme
         run: |
           git clone https://github.com/alexandrevicenzi/Flex.git themes/Flex
+          pipenv pelican-themes --install themes/Flex/
 
       - name: Update publishconf.py for Flex theme
         run: echo "THEME = 'themes/Flex'" >> publishconf.py
@@ -53,13 +54,13 @@ jobs:
           key: ${{ runner.os }}-${{ hashFiles('.pelican_settings.json') }}
           path: cache
       
-    #   - name: Build Pelican site
-    #     run: pipenv run pelican --settings publishconf.py --extra-settings SITEURL='"${{ steps.pages.outputs.base_url }}"'
+      - name: Build Pelican site
+        run: pipenv run pelican --settings publishconf.py --extra-settings SITEURL='"${{ steps.pages.outputs.base_url }}"'
       
-    #   - name: Upload artifact
-    #     uses: actions/upload-pages-artifact@v2
-    #     with:
-    #       path: output
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: output
 
 #   Deploy:
 #     if: github.event.pull_request.merged == true

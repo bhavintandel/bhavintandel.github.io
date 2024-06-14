@@ -37,6 +37,10 @@ jobs:
       - name: Configure GitHub Pages
         id: pages
         uses: actions/configure-pages@v3
+    
+      - name: Install Flex theme
+        run: |
+          git clone https://github.com/alexandrevicenzi/Flex.git themes/Flex
       
     #   - name: Print Pelican settings
     #     run: pipenv run pelican --print-settings > .pelican_settings.json

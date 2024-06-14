@@ -89,3 +89,4 @@ SITEMAP = {
 COPYRIGHT_YEAR = datetime.now().year
 
 USE_LESS = True
+DEFAULT_PAGINATION = 20

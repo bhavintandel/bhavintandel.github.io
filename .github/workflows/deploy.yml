@@ -40,7 +40,7 @@ jobs:
       - name: Install Flex theme
         run: |
           git clone https://github.com/alexandrevicenzi/Flex.git themes/Flex
-          pipenv pelican-themes --install themes/Flex/
+          pipenv run pelican-themes --install themes/Flex/
 
       - name: Update publishconf.py for Flex theme
         run: echo "THEME = 'themes/Flex'" >> publishconf.py

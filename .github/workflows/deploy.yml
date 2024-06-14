@@ -62,24 +62,24 @@ jobs:
         with:
           path: output
 
-#   Deploy:
-#     if: github.event.pull_request.merged == true
-#     environment:
-#       name: github-pages
-#       url: ${{ steps.deployment.outputs.page_url }}
-#     runs-on: ubuntu-latest
-#     needs: Build
-#     steps:
-#       - name: Deploy to GitHub Pages
-#         id: deployment
-#         uses: actions/deploy-pages@v2
-
-  deploy:
+  Deploy:
+    # if: github.event.pull_request.merged == true
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
     needs: Build
-    uses: "getpelican/pelican/.github/workflows/github_pages.yml@master"
-    permissions:
-      contents: "read"
-      pages: "write"
-      id-token: "write"
-    with:
-      settings: "publishconf.py"
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
+
+#   deploy:
+#     needs: Build
+#     uses: "getpelican/pelican/.github/workflows/github_pages.yml@master"
+#     permissions:
+#       contents: "read"
+#       pages: "write"
+#       id-token: "write"
+#     with:
+#       settings: "publishconf.py"

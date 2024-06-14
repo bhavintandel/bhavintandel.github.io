@@ -1,9 +1,8 @@
 name: Build and Deploy Pelican site to GitHub Pages
 
 on:
-  pull_request:
-    types:
-      - closed
+  push:
+    branches: ["main", "master"]
   workflow_dispatch:
 
 permissions:
@@ -11,13 +10,13 @@ permissions:
   pages: write
   id-token: write
 
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
+# concurrency:
+#   group: "pages"
+#   cancel-in-progress: false
 
 jobs:
   Build:
-    if: github.event.pull_request.merged == true
+    # if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -28,16 +27,26 @@ jobs:
         with:
           python-version: "3.11"
       
-      - name: Install requirements
-        run: pip install "pelican[markdown]"
+      - name: Install pipenv
+        run: pip install pipenv
+        
+      - name: Install dependencies
+        run: pipenv install --dev --ignore-pipfile
       
       - name: Configure GitHub Pages
         id: pages
         uses: actions/configure-pages@v3
-      
-      - name: Print Pelican settings
-        run: pelican --print-settings > .pelican_settings.json
-        shell: bash
+    
+      - name: Install Flex theme
+        run: |
+          git clone https://github.com/alexandrevicenzi/Flex.git themes/Flex
+          pipenv run pelican-themes --install themes/Flex/
+
+      - name: Update publishconf.py for Flex theme
+        run: echo "THEME = 'themes/Flex'" >> publishconf.py
+        
+    #   - name: Print Pelican settings
+    #     run: pipenv run pelican --print-settings > .pelican_settings.json
       
       - name: Cache
         uses: actions/cache@v3
@@ -46,7 +55,7 @@ jobs:
           path: cache
       
       - name: Build Pelican site
-        run: pelican --settings publishconf.py --extra-settings SITEURL='"${{ steps.pages.outputs.base_url }}"'
+        run: pipenv run pelican --settings publishconf.py --extra-settings SITEURL='"${{ steps.pages.outputs.base_url }}"'
       
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
@@ -54,7 +63,7 @@ jobs:
           path: output
 
   Deploy:
-    if: github.event.pull_request.merged == true
+    # if: github.event.pull_request.merged == true
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -64,3 +73,13 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
+
+#   deploy:
+#     needs: Build
+#     uses: "getpelican/pelican/.github/workflows/github_pages.yml@master"
+#     permissions:
+#       contents: "read"
+#       pages: "write"
+#       id-token: "write"
+#     with:
+#       settings: "publishconf.py"

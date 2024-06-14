@@ -37,7 +37,6 @@ jobs:
       
       - name: Print Pelican settings
         run: pelican --print-settings > .pelican_settings.json
-        shell: bash
       
       - name: Cache
         uses: actions/cache@v3

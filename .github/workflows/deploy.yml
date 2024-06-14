@@ -28,15 +28,18 @@ jobs:
         with:
           python-version: "3.11"
       
-      - name: Install requirements
-        run: pip install "pelican[markdown]"
+      - name: Install pipenv
+        run: pip install pipenv
+        
+      - name: Install dependencies
+        run: pipenv install --deploy --ignore-pipfile
       
       - name: Configure GitHub Pages
         id: pages
         uses: actions/configure-pages@v3
       
       - name: Print Pelican settings
-        run: pelican --print-settings > .pelican_settings.json
+        run: pipenv run pelican --print-settings > .pelican_settings.json
       
       - name: Cache
         uses: actions/cache@v3
@@ -45,7 +48,7 @@ jobs:
           path: cache
       
       - name: Build Pelican site
-        run: pelican --settings publishconf.py --extra-settings SITEURL='"${{ steps.pages.outputs.base_url }}"'
+        run: pipenv run pelican --settings publishconf.py --extra-settings SITEURL='"${{ steps.pages.outputs.base_url }}"'
       
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2

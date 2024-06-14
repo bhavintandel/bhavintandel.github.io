@@ -74,6 +74,7 @@ jobs:
 #         uses: actions/deploy-pages@v2
 
   deploy:
+    needs: Build
     uses: "getpelican/pelican/.github/workflows/github_pages.yml@master"
     permissions:
       contents: "read"
